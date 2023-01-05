@@ -1,6 +1,6 @@
 # rock_paper_scissors_game-
 
-# Pseudocode Rock-Paper-Scissors Game
+
 
 ## Instructions
 
