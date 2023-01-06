@@ -1,66 +1,50 @@
-console.log('starting');
+console.log('start playing');
 
-function getRandomItem(arr) {
+// Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+let choices = ["r", "p", "s"];
+  
+// Creating variables to hold the number of wins, losses, and ties. They start at 0.
+let wins = 0;
+let losses = 0;
+let ties = 0;
 
-    // get random index value
-    const randomIndex = Math.floor(Math.random() * arr.length);
+//Create a for loop to automatically iterate the the conditional loop through
+for(let playTime = 0; playTime < 12; playTime++) {
+  
+  let userChoice = prompt("Enter your choice - Rock(r), Paper(p) or Scissors(s)");
 
-    // get random item
-    const item = arr[randomIndex];
+let randomIndex = Math.floor(Math.random() * choices.length);
+let computerChoice = choices[randomIndex];
 
-    return item;
+// Create a conditional loop to check impletment the condition of the game
+  if (userChoice === "r" ||
+  userChoice === "p" ||
+  userChoice === "s") {
+
+  alert("You have chosen: " + userChoice);
+  alert("Computer has chosen: " + computerChoice);
+
+  if (userChoice === computerChoice) {
+    ties = ties+1;
+    alert("Its a tie.");
+  } else if ((userChoice === "r" && computerChoice === "s") ||
+              (userChoice === "p" && computerChoice === "r") ||
+    (userChoice === "s" && computerChoice === "p")) {
+    wins++;
+    alert("You won!");
+  } else {
+    losses++;
+    alert("You lost!");
+  }
+} else {
+  alert("Wrong choice!");
 }
 
+//create a conditional loop to display the results
+if(playTime === 10) {
+  console.log("wins: " + wins);
+  console.log("losses: " + losses);
+  console.log("ties: " + ties);
+}
 
-    const game = () => {
-        let win = 0;
-    let lose = 0;
-    let tie = 0;
-
-//       const options = ['P', 'R', 'S'];
-// const computer = Math.floor(Math.random() * options.length);
-// console.log(computer, options[computer]);
-// computerOption = options[computer];
-// console.log(computerOption);
-
-const options = ['P', 'R', 'S'];
-const computerOption = getRandomItem(options);
-console.log(computerOption);
-
-        for (let play = 0; play < 100; play++) {
-            const userInput = prompt('Enter either P, R, or S');
-            let toUperCase = userInput.toUpperCase();
-            
-            if (toUperCase === 'R' && computerOption === 'S') {
-                console.log('You won');
-                win += 1;
-            } else if (toUperCase === 'P' && computerOption === 'R') {
-                console.log('You won');
-                win += 1;
-            } else if (toUperCase === 'S' && computerOption === 'P') {
-                console.log('You won');
-                win += 1;
-            } else if (toUperCase === 'S' && computerOption === 'R') {
-                console.log('You lose');
-                lose += 1;
-            } else if (toUperCase === 'R' && computerOption === 'P') {
-                console.log('You lose');
-                lose += 1;
-            } else if (toUperCase === 'P' && computerOption === 'S') {
-                console.log('You lose');
-                lose += 1;
-            } else if (toUperCase === computerOption) {
-                console.log('You tie');
-                tie += 1;
-            } else {
-                console.log('Invalid Input');
-            }
-            
-                if(play === 10) {
-                    console.log('win: ' + win);
-                    console.log('lose: ' + lose);
-                    console.log('tie: ' + tie);
-                }
-        }
-    }
-    game();
+}
